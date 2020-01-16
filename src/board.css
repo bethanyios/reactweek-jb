@@ -10,13 +10,23 @@
     justify-content: center;
 }
 
-.square{
-    border: 2px solid blue;
-    width: 100px;
-    height: 100px;
-}
 
 img{
     border-radius: 50%;
     max-width: 50px;
+}
+
+.square{
+    background-color: #FFD195;
+    border: 2px solid black;
+    width: 100px;
+    height: 100px;
+}
+
+.rest-square{
+    background-image: url("./utils/restSquareImg.png");
+    background-size: cover;
+    border: 2px solid black;
+    width: 100px;
+    height: 100px;
 }
