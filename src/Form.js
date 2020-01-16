@@ -20,7 +20,7 @@ const Form = ({userData, setUserData, username, setUsername, setConnectPage}) =>
     event.preventDefault();
     setConnectPage("game")
   }
-  
+
 return (
   <section>
 
