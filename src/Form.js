@@ -4,7 +4,7 @@ import "./Form.css";
 
 
 const Form = ({userData, setUserData, username, setUsername, setConnectPage}) => {
-  
+
   const url = `https://api.github.com/users/${username}?access_token=${process.env.REACT_APP_GITHUB_TOKEN}`;
 
   const submitUser = event => {
@@ -23,34 +23,34 @@ const Form = ({userData, setUserData, username, setUsername, setConnectPage}) =>
   
 return (
   <section>
-    
+
       <form>
       <fieldset>
         <legend>THE GAME OF LIFE</legend>
-        
+
         <label htmlFor="user-form">Enter your github username:</label>
         <div id="user-entry">
-        <input 
+        <input
           id="user-form"
           type="text"
           placeholder="@"
-          onChange={event => setUsername(event.target.value)}          
+          onChange={event => setUsername(event.target.value)}
         />
         <button onClick={submitUser}>
           Enter
         </button>
         </div>
         <img alt="github avatar" src={userData.avatarUrl} />
-            <h2>{userData.name}</h2>  
-        
-        <button 
+            <h2>{userData.name}</h2>
+
+        <button
         onClick={startGame}
         >
           Start Game
         </button>
         </fieldset>
       </form>
-    
+
   </section>
 
 )
