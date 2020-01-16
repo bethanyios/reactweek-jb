@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import Form from "./Form"
+import Page from "./pageSelect"
 
 function App() {
   return (
     <div className="App">
       
       <header className="App-header">
-      <Form />
+      <Page />
       </header>
     </div>
   );
