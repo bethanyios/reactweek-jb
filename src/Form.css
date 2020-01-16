@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+}
+
+.user-entry {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+img {
+    border-radius: 50%;
+    max-width:100px;
+    justify-self: center; 
+    margin-top: 25px;
+}
+
+input {
+    margin-right: 5px;
+}
