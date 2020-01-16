@@ -3,7 +3,7 @@ import Avatar from "./avatar";
 import "./board.css";
 
 const Board = ({avatar}) => {
-    const [ position, setPosition ] = React.useState(1);
+    const [ position, setPosition ] = React.useState(0);
     const [ key, setKey ] = React.useState(null);
 
 
@@ -26,17 +26,24 @@ const Board = ({avatar}) => {
 
     }, [key, setKey, position, setPosition])
 
+    const arr = ["INFANCY", null, "DISGRACE"];
 
 
 return (
-  Array.from({length : 36}, (x,i) => {
+
+
     return (
-    <div className ={i % 2 ? "square" : "rest-square"}>
+    <section className = "board">
+    <div className ={i%2 ? "rest-square" : "square"}>
     {position === i ? <Avatar avatar = {avatar} /> : null}
     </div>
-  )
-})
-)}
+     </section>
+  )})
+
+)
+
+
+}
 export default Board;
 
 
