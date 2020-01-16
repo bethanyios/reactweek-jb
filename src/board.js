@@ -26,12 +26,11 @@ const Board = ({avatar}) => {
 
     }, [key, setKey, position, setPosition])
 
-    const arr = ["INFANCY", null, "DISGRACE"];
+    // const arr = ["INFANCY", null, "DISGRACE"];
 
 
 return (
-
-
+Array.from ({length : 36}, (x,i) => {
     return (
     <section className = "board">
     <div className ={i%2 ? "rest-square" : "square"}>
@@ -41,9 +40,8 @@ return (
   )})
 
 )
-
-
 }
+
 export default Board;
 
 
