@@ -25,7 +25,6 @@ return (
       <form>
       <fieldset>
         <legend>THE GAME OF LIFE</legend>
-
         <label htmlFor="user-form">Enter your github username:</label>
         <div id="user-entry">
         <input
@@ -40,7 +39,6 @@ return (
         </div>
         <img className="landing-avatar" alt="github avatar" src={userData.avatarUrl} />
             <h2>{userData.name}</h2>
-
         <button
         onClick={startGame}
         >
