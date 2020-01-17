@@ -8,9 +8,9 @@ const PageSelect = (props) => {
     const [ username, setUsername ] = React.useState("jc2820")
     const [connectPage, setConnectPage] = React.useState("form");
 
-    if (connectPage === "form") {
+    if (connectPage === "game") {
         return (
-          <Form
+          <Game
             userData={userData}
             setUserData={setUserData}
             username = {username}
@@ -18,9 +18,9 @@ const PageSelect = (props) => {
             setConnectPage={setConnectPage}
           />
         );
-      } else if (connectPage === "game") {
+      } else {
         return (
-          <Game     
+          <Form     
           userData={userData}
           setUserData={setUserData}
           username = {username}
