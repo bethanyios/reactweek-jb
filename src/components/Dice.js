@@ -2,7 +2,7 @@ import React from "react"
 import "./Dice.css";
 
 const Dice = () => {
-    const [roll, setRoll] = React.useState("☟");
+    const [roll, setRoll] = React.useState("0");
 
     const rollDice = (event, max, min) => {
         min = 1;
@@ -14,7 +14,7 @@ const Dice = () => {
         <fieldset className="dice-fieldset">
             <legend>ROLL THE DICE</legend>
             <p className="dice-value">
-                {roll}
+                {roll > 0 ? roll : "☟"}
             </p>
             🎲 <button className="roll-button" onClick={rollDice}>
                 Roll Dice
