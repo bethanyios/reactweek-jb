@@ -1,68 +1,147 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# The Game of Life
 
-## Available Scripts
+The original game of life board from the 1860s.
+Since, modernised versions of the game have come out, the winner being the player with the most money. We wanted to maintain as much of the original as possible - a game about growing older and simply experiencing the events of life.
+![](https://i.imgur.com/drqIkUE.jpg =650x)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Process
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Brain storming ideas
+![](https://i.imgur.com/WMtYXKb.jpg =800x)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+---
 
-### `npm test`
+Amending the original board game: removing less relevant life events and made smaller for timeframe.
+![](https://i.imgur.com/uipAbav.jpg)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+Wireframes and stretch goals
+![](https://i.imgur.com/hoDhDwd.jpg)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Deciding on the dice rolling function: random generator
+![](https://i.imgur.com/4LfK29E.jpg =800x)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## The connector page
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```=Javascript
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+const PageSelect = (props) => {
+    const [ userData, setUserData ] = React.useState({ name: "Player", avatarUrl: "https://source.unsplash.com/300x300/?sunflower" });
+    const [ username, setUsername ] = React.useState("jc2820")
+    const [connectPage, setConnectPage] = React.useState("form");
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    if (connectPage === "form") {
+        return (
+          <Form
+            userData={userData}
+            setUserData={setUserData}
+            username = {username}
+            setUsername = {setUsername}
+            setConnectPage={setConnectPage}
+          />
+        );
+      } else if (connectPage === "game") {
+        return (
+          <Game
+          userData={userData}
+          setUserData={setUserData}
+          username = {username}
+          setUsername = {setUsername}
+          setConnectPage={setConnectPage}
+          />
+        );
+  };
+}
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+---
 
-## Learn More
+## Form entry
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```=Javascript
+const Form = ({userData, setUserData, username, setUsername, setConnectPage}) => {
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  const url = `https://api.github.com/users/${username}?access_token=${process.env.REACT_APP_GITHUB_TOKEN}`;
 
-### Code Splitting
+  const submitUser = event => {
+    event.preventDefault();
+    getUserData(url)
+    .then(response => response.json())
+    .then(data => {
+      setUserData({ name: data.name, avatarUrl: data.avatar_url })
+    })
+  }
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+  const startGame = event => {
+    event.preventDefault();
+    setConnectPage("game")
+  }
+```
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Keyboard kontrol
 
-### Making a Progressive Web App
+```=Javascript
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+const Board = ({avatar}) => {
+    const [ position, setPosition ] = React.useState(0);
 
-### Advanced Configuration
+    React.useEffect(() => {
+       const movePosition = event => {
+         if (event.key === "ArrowLeft") {
+           setPosition(position - 1)
+         } else if (event.key === "ArrowRight") {
+           setPosition(position + 1)
+         }
+       };
+       window.addEventListener("keydown", movePosition);
+       return () => window.removeEventListener("keydown", movePosition);
+     }, [position, setPosition]);
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+return (
+Array.from ({length : 25}, (x,i) => {
+    return (
+    <div className ={i%2 ? "rest-square" : "square"}>
+    {position === i ? <Avatar avatar = {avatar} /> : null}
+    </div>
+  )})
+)
+}
 
-### Deployment
+```
+---
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+## Dice
 
-### `npm run build` fails to minify
+```=Javascript
+const Dice = () => {
+    const [roll, setRoll] = React.useState("0");
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+    const rollDice = (event, max, min) => {
+        min = 1;
+        max = 7;
+        setRoll(Math.floor(Math.random() * (max - min)) + min)
+    }
+
+    return (
+        <fieldset className="dice-fieldset">
+            <legend>ROLL THE DICE</legend>
+            <p className="dice-value">
+                {roll > 0 ? roll : "☟"}
+            </p>
+            🎲 <button className="roll-button" onClick={rollDice}>
+                Roll Dice
+            </button>
+        </fieldset>
+    )
+}
+
+```
