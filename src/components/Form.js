@@ -21,7 +21,7 @@ const Form = ({userData, setUserData, username, setUsername, setConnectPage}) =>
   }
 
 return (
-  <section class="form-container">
+  <section className="form-container">
       <form>
       <fieldset>
         <legend>THE GAME OF LIFE</legend>
