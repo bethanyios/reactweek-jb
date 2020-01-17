@@ -8,13 +8,16 @@
 .left-column {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;}
+    justify-content: space-between;
+    position: relative;
+    top:-20px;
+    padding:0;
+}
 
 .game-items {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    padding-bottom: 75px;
 }
 
 .board {

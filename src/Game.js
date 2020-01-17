@@ -1,6 +1,7 @@
 import React from "react";
 import Dice from "./dice";
 import Board from "./board";
+import Instructions from "./instructions"
 import "./Game.css";
 
 const Game = ({userData, setConnectPage}) => {
@@ -15,6 +16,7 @@ return (
             <div className="game-items">
             <div className="left-column">
             <Dice />
+            <Instructions />
             <button className="quit-button" onClick={event => {event.preventDefault(); setConnectPage("form")}}>
             Quit Game
         </button>
