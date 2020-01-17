@@ -11,8 +11,6 @@ return (
        <fieldset>
         <legend>THE GAME OF LIFE</legend>
             <h2>{userData.name}</h2>
-
-
             <div className="game-items">
             <div className="left-column">
             <Dice />
