@@ -2,7 +2,7 @@ import React from "react"
 import "./dice.css";
 
 const Dice = () => {
-    const [roll, setRoll] = React.useState(null);
+    const [roll, setRoll] = React.useState("⬇");
 
     const rollDice = (event, max, min) => {
         event.preventDefault();
@@ -11,13 +11,12 @@ const Dice = () => {
         setRoll(Math.floor(Math.random() * (max - min)) + min)
     }
     
-
     return (
         <div className="dice-box">
             <p className="dice-value">
                 {roll}
             </p>
-            🎲<button onClick={rollDice}>
+            🎲 <button className="roll-button" onClick={rollDice}>
                 Roll Dice
             </button>
         </div>

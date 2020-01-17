@@ -2,7 +2,6 @@ import React from "react";
 import {getUserData} from "./utils/getUserData"
 import "./Form.css";
 
-
 const Form = ({userData, setUserData, username, setUsername, setConnectPage}) => {
 
   const url = `https://api.github.com/users/${username}?access_token=${process.env.REACT_APP_GITHUB_TOKEN}`;
@@ -22,8 +21,7 @@ const Form = ({userData, setUserData, username, setUsername, setConnectPage}) =>
   }
 
 return (
-  <section>
-
+  <section class="form-container">
       <form>
       <fieldset>
         <legend>THE GAME OF LIFE</legend>
@@ -40,7 +38,7 @@ return (
           Enter
         </button>
         </div>
-        <img alt="github avatar" src={userData.avatarUrl} />
+        <img className="landing-avatar" alt="github avatar" src={userData.avatarUrl} />
             <h2>{userData.name}</h2>
 
         <button
@@ -50,11 +48,9 @@ return (
         </button>
         </fieldset>
       </form>
-
   </section>
 
 )
 };
-
 
 export default Form;

@@ -4,11 +4,8 @@ import PageSelect from "./pageSelect"
 
 function App() {
   return (
-    <div className="App">
-      
-      <header className="App-header">
-      <PageSelect />
-      </header>
+    <div className="App">  
+      <PageSelect />    
     </div>
   );
 }
