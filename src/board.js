@@ -1,6 +1,6 @@
 import React from "react";
-import Avatar from "./Avatar";
-import "./Board.css";
+import Avatar from "./avatar";
+import "./board.css";
 
 const Board = ({avatar}) => {
     const [ position, setPosition ] = React.useState(0);

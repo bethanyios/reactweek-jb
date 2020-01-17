@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import PageSelect from "./PageSelect"
+import PageSelect from "./pageSelect"
 
 function App() {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import {getUserData} from "../utils/getUserData"
+import {getUserData} from "./utils/getUserData"
 import "./Form.css";
 
 const Form = ({userData, setUserData, username, setUsername, setConnectPage}) => {
