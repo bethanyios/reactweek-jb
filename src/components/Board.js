@@ -1,6 +1,7 @@
 import React from "react";
 import Avatar from "./Avatar";
 import "./Board.css";
+import squaresInfo from "../utils/data";
 
 const Board = ({avatar}) => {
     const [ position, setPosition ] = React.useState(0);
@@ -18,10 +19,11 @@ const Board = ({avatar}) => {
      }, [position, setPosition]);
 
 return (
-Array.from ({length : 25}, (x,i) => {
+  Array.from (squaresInfo, (x,i) => {
     return (
     <div className ={i%2 ? "rest-square" : "square"}>
     {position === i ? <Avatar avatar = {avatar} /> : null}
+    {<p className="square-text">{squaresInfo[i]}</p>}
     </div>
   )})
 )
