@@ -4,7 +4,7 @@ import Game from "./Game";
 import "./PageSelect.css";
 
 const PageSelect = (props) => {
-    const [ userData, setUserData ] = React.useState({ name: "Player", avatarUrl: "https://source.unsplash.com/300x300/?one" });
+    const [ userData, setUserData ] = React.useState({ name: "Player", avatarUrl: "https://source.unsplash.com/300x300/?giraffe" });
     const [ username, setUsername ] = React.useState("jc2820")
     const [connectPage, setConnectPage] = React.useState("form");
 
@@ -30,6 +30,6 @@ const PageSelect = (props) => {
         );
   };
 }
-  
-  
+
+
   export default PageSelect;

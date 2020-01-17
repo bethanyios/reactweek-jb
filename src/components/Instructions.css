@@ -1,7 +1,7 @@
-.instruction-box {
+.instructions-box {
   width: 25vw;
   max-width: 25vw;
-  height: 200px;
+  height: 50vh;
   margin: 0;
 }
 
