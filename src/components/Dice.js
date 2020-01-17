@@ -1,5 +1,5 @@
 import React from "react"
-import "./dice.css";
+import "./Dice.css";
 
 const Dice = () => {
     const [roll, setRoll] = React.useState("☟");

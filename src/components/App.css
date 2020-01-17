@@ -3,7 +3,7 @@
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
-    justify-content: center;
+  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -23,11 +23,10 @@
   border: none;
   background-color: white;
   color: #282c34;
-  margin:10px;
-  padding:10px;
+  margin: 10px;
+  padding: 10px;
   border-radius: 5px;
-  font-family: 'Acme', sans-serif;
+  font-family: "Acme", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
