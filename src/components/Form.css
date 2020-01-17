@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.user-entry {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.landing-avatar {
+  border-radius: 50%;
+  max-width: 100px;
+  justify-self: center;
+  margin-top: 25px;
+}
+
+input {
+  margin-right: 5px;
+}
+
+.button {
+  border: none;
+  background-color: white;
+  color: #282c34;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: "Acme", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

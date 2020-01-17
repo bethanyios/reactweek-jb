@@ -1,7 +1,7 @@
 import React from "react";
-import Dice from "./dice";
-import Board from "./board";
-import Instructions from "./instructions"
+import Dice from "./Dice";
+import Board from "./Board";
+import Instructions from "./Instructions"
 import "./Game.css";
 
 const Game = ({userData, setConnectPage}) => {
