@@ -1,9 +1,8 @@
-.instruction-box {
+.instructions-box {
     width: 25vw;
-    max-width:25vw;
-    height:200px;
-    margin:0;
-
+    max-width: 25vw;
+    height: 50vh;
+    margin: 0;
 }
 
 .instructions-fieldset {
