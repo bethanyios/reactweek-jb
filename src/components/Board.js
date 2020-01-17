@@ -4,27 +4,18 @@ import "./Board.css";
 
 const Board = ({avatar}) => {
     const [ position, setPosition ] = React.useState(0);
-    const [ key, setKey ] = React.useState(null);
-
-
 
     React.useEffect(() => {
-        const storeKey = event => setKey(event.key);
-        window.addEventListener("keydown", storeKey);
-
-        if (key === "ArrowLeft") {
-            setPosition(position - 1)
-            setKey(null)
-        } else if (key === "ArrowRight"){
-            setPosition(position + 1)
-            setKey(null)
-        }
-        console.log(position);
-        return () => window.removeEventListener("keydown", storeKey);
-
-
-
-    }, [key, setKey, position, setPosition])
+       const movePosition = event => {
+         if (event.key === "ArrowLeft") {
+           setPosition(position - 1)
+         } else if (event.key === "ArrowRight") {
+           setPosition(position + 1)
+         }
+       };
+       window.addEventListener("keydown", movePosition);
+       return () => window.removeEventListener("keydown", movePosition);
+     }, [position, setPosition]);
 
 return (
 Array.from ({length : 25}, (x,i) => {
@@ -33,7 +24,6 @@ Array.from ({length : 25}, (x,i) => {
     {position === i ? <Avatar avatar = {avatar} /> : null}
     </div>
   )})
-
 )
 }
 
