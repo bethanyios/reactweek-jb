@@ -1,15 +1,18 @@
 # The Game of Life
 
-The original game of life board from the 1860s.
-Since, modernised versions of the game have come out, the winner being the player with the most money. We wanted to maintain as much of the original as possible - a game about growing older and simply experiencing the events of life.
-![](https://i.imgur.com/drqIkUE.jpg =650x)
+By [Beth](https://github.com/bethanyios) & [Jamie](https://github.com/jc2820)
+
+[https://the-game-of-life-1860.netlify.com/](https://the-game-of-life-1860.netlify.com/)
+
+'The Game of Life' Is a board game originally designed in the 1860's. Modernised versions of the game have since come out, the winner being the player with the most money. With our React game we wanted to maintain as much of the original as possible - a game about growing older and simply experiencing the events of life.
+![The 1860 board](https://i.imgur.com/drqIkUE.jpg)
 
 ---
 
 ## Process
 
 Brain storming ideas
-![](https://i.imgur.com/WMtYXKb.jpg =800x)
+![](https://i.imgur.com/WMtYXKb.jpg)
 
 ---
 
@@ -23,8 +26,12 @@ Wireframes and stretch goals
 
 ---
 
-Deciding on the dice rolling function: random generator
-![](https://i.imgur.com/4LfK29E.jpg =800x)
+Deciding on the dice rolling component: random generator
+![](https://i.imgur.com/4LfK29E.jpg)
+
+---
+
+## Interesting code snippets
 
 ---
 
@@ -37,9 +44,9 @@ const PageSelect = (props) => {
     const [ username, setUsername ] = React.useState("jc2820")
     const [connectPage, setConnectPage] = React.useState("form");
 
-    if (connectPage === "form") {
+    if (connectPage === "game") {
         return (
-          <Form
+          <Game
             userData={userData}
             setUserData={setUserData}
             username = {username}
@@ -47,9 +54,9 @@ const PageSelect = (props) => {
             setConnectPage={setConnectPage}
           />
         );
-      } else if (connectPage === "game") {
+      } else {
         return (
-          <Game
+          <Form     
           userData={userData}
           setUserData={setUserData}
           username = {username}
@@ -63,31 +70,7 @@ const PageSelect = (props) => {
 
 ---
 
-## Form entry
-
-```=Javascript
-const Form = ({userData, setUserData, username, setUsername, setConnectPage}) => {
-
-  const url = `https://api.github.com/users/${username}?access_token=${process.env.REACT_APP_GITHUB_TOKEN}`;
-
-  const submitUser = event => {
-    event.preventDefault();
-    getUserData(url)
-    .then(response => response.json())
-    .then(data => {
-      setUserData({ name: data.name, avatarUrl: data.avatar_url })
-    })
-  }
-
-  const startGame = event => {
-    event.preventDefault();
-    setConnectPage("game")
-  }
-```
-
----
-
-## Keyboard kontrol
+## Keyboard kontrol and board square creation
 
 ```=Javascript
 
@@ -107,16 +90,19 @@ const Board = ({avatar}) => {
      }, [position, setPosition]);
 
 return (
-Array.from ({length : 25}, (x,i) => {
+  Array.from (squaresInfo, (x,i) => {
     return (
     <div className ={i%2 ? "rest-square" : "square"}>
     {position === i ? <Avatar avatar = {avatar} /> : null}
+    {<p className="square-text">{squaresInfo[i]}</p>}
     </div>
   )})
 )
 }
 
+
 ```
+
 ---
 
 ## Dice
